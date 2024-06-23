@@ -5,7 +5,7 @@ class Point
 
 	public Point(int x, int y)
 	{
-		X = y;
+		X = x;
 		Y = y;
 	}
 }
