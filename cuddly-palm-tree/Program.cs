@@ -8,9 +8,7 @@ public class Program
 		Console.Clear();
 		Player hero = new Player();
 		Map map = new Map();
-        Point mapOrigin = new Point();
-		mapOrigin.X = 5;
-		mapOrigin.Y = 3;
+        Point mapOrigin = new Point(5, 3);
 		map.Display(mapOrigin);
         map.DrawSomethingAt(hero.Visuals, hero.Position);
 		while (true)

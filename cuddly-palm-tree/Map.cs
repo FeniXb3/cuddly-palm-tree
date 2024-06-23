@@ -11,7 +11,7 @@ class Map
         "#########",
     };
     
-    private Point origin = new Point();
+    private Point origin = new Point(0, 0);
     
     public void Display(Point mapOrigin)
     {

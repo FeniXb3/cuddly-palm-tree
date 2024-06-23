@@ -1,8 +1,8 @@
 class Player
 {
 	public string Visuals { get; private set; } = "@";
-	public Point Position { get; private set; } = new Point();
-	public Point PreviousPosition { get; private set; } = new Point();
+	public Point Position { get; private set; } = new Point(0, 0);
+	public Point PreviousPosition { get; private set; } = new Point(0, 0);
 	
 	public void Display()
 	{
@@ -12,9 +12,7 @@ class Player
 	
 	public Point GetNextPosition()
 	{
-		Point point = new Point();
-		point.X = Position.X;
-		point.Y = Position.Y;
+		Point point = new Point(Position.X, Position.Y);
 		
 		ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 		if (keyInfo.Key == ConsoleKey.D)
