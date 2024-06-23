@@ -41,11 +41,17 @@ class Map
 
     public void RedrawCell(Point position)
     {
-        string row = mapData[position.Y];
-        char cell = row[position.X];
+        char cell = GetCellAt(position);
 
         SetCursorPositionWithOrigin(position);
         Console.Write(cell);
+    }
+
+    private char GetCellAt(Point position)
+    {
+        string row = mapData[position.Y];
+        char cell = row[position.X];
+        return cell;
     }
 
     internal bool IsPositionCorrect(Point position)
@@ -53,7 +59,11 @@ class Map
         if (position.Y >= 0 && position.Y < mapData.Length
             && position.X >= 0 && position.X < mapData[position.Y].Length)
         {
-            return true;
+            char cell = GetCellAt(position);
+            if (cell != '#')
+            {
+                return true;
+            }
         }
 
         return false;

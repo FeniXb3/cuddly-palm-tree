@@ -1,6 +1,6 @@
 class Player
 {
- public string Visuals { get; private set; }
+ 	public string Visuals { get; private set; }
     public Point Position { get; private set; }
     public Point PreviousPosition { get; private set; }
 
