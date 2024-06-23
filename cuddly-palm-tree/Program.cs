@@ -6,7 +6,7 @@ public class Program
 	{
 		Console.CursorVisible = false;
 		Console.Clear();
-		Player hero = new Player();
+		Player hero = new Player("@", new Point(0, 0));
 		Map map = new Map();
         Point mapOrigin = new Point(5, 3);
 		map.Display(mapOrigin);

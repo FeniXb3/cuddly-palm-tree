@@ -1,9 +1,15 @@
 class Player
 {
-	public string Visuals { get; private set; } = "@";
-	public Point Position { get; private set; } = new Point(0, 0);
-	public Point PreviousPosition { get; private set; } = new Point(0, 0);
-	
+ public string Visuals { get; private set; }
+    public Point Position { get; private set; }
+    public Point PreviousPosition { get; private set; }
+
+    public Player(string visuals, Point position)
+	{
+        Visuals = visuals;
+        Position = new Point(position.X, position.Y);
+        PreviousPosition = new Point(Position.X, Position.Y);
+    }
 	public void Display()
 	{
 		Console.SetCursorPosition(Position.X, Position.Y);
