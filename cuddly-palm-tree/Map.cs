@@ -1,4 +1,6 @@
 
+using System.Runtime.Serialization;
+
 class Map
 {
     string[] mapData = new string[]{
@@ -15,6 +17,17 @@ class Map
     
     public void Display(Point mapOrigin)
     {
+        int sizeY = mapData.Length;
+        int sizeX = mapData[0].Length;
+
+        int drawingWidth = sizeX + mapOrigin.X;
+        int drawingHeight = sizeY + mapOrigin.Y;
+
+        if (drawingWidth >= Console.BufferWidth || drawingHeight >= Console.BufferHeight)
+        {
+            throw new WindowToSmallToDrawException(new Point(drawingWidth, drawingHeight));
+        }
+        
         origin = mapOrigin;
         Console.CursorTop = mapOrigin.Y;
         foreach (string row in mapData)
@@ -22,7 +35,6 @@ class Map
             Console.CursorLeft = mapOrigin.X;
             Console.WriteLine(row);
         }
-    
     }
 
     internal void DrawSomethingAt(string visuals, Point position)
@@ -67,5 +79,16 @@ class Map
         }
 
         return false;
+    }
+}
+
+[Serializable]
+internal class WindowToSmallToDrawException : Exception
+{
+    public Point ExpectedSize { get; private set;}
+
+    public WindowToSmallToDrawException(Point expectedSize) : base($"Minimum required window size is ({expectedSize.X}, {expectedSize.Y})")
+    {
+        ExpectedSize = expectedSize;
     }
 }
