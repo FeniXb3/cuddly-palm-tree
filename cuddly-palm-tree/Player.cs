@@ -8,8 +8,6 @@ class Player
 	{
 		Console.SetCursorPosition(position.x, position.y);
 		Console.Write(visuals);
-		//@ at (2, 5)
-		// Console.WriteLine($" at ({position.x}, {position.y})");
 	}
 	
 	public Point GetNextPosition()
@@ -21,22 +19,18 @@ class Player
 		ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 		if (keyInfo.Key == ConsoleKey.D)
 		{
-			// dodaj 1 do x
 			point.x += 1;
 		}
 		else if (keyInfo.Key == ConsoleKey.A)
 		{
-			// dodaj 1 do x
 			point.x -= 1;
 		}
 		else if (keyInfo.Key == ConsoleKey.W)
 		{
-			// dodaj 1 do x
 			point.y -= 1;
 		}
 		else if (keyInfo.Key == ConsoleKey.S)
 		{
-			// dodaj 1 do x
 			point.y += 1;
 		}
 		
@@ -52,22 +46,3 @@ class Player
 		position.y = targetY;
 	}
 }
-
-/*
-Klasa Player
-dane:
-- nick
-- reprezentacja wizualna
-- punkty życia
-- siła ataku
-- pozycja
-
-akcje:
-- poruszanie się
-- atak
-- zbieranie obrażeń
-- leczenie się
-- wyświetlanie
-- animacja
-
-*/
