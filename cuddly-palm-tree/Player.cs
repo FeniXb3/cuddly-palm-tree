@@ -6,32 +6,32 @@ class Player
 	
 	public void Display()
 	{
-		Console.SetCursorPosition(Position.x, Position.y);
+		Console.SetCursorPosition(Position.X, Position.Y);
 		Console.Write(Visuals);
 	}
 	
 	public Point GetNextPosition()
 	{
 		Point point = new Point();
-		point.x = Position.x;
-		point.y = Position.y;
+		point.X = Position.X;
+		point.Y = Position.Y;
 		
 		ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 		if (keyInfo.Key == ConsoleKey.D)
 		{
-			point.x += 1;
+			point.X += 1;
 		}
 		else if (keyInfo.Key == ConsoleKey.A)
 		{
-			point.x -= 1;
+			point.X -= 1;
 		}
 		else if (keyInfo.Key == ConsoleKey.W)
 		{
-			point.y -= 1;
+			point.Y -= 1;
 		}
 		else if (keyInfo.Key == ConsoleKey.S)
 		{
-			point.y += 1;
+			point.Y += 1;
 		}
 		
 		return point;
@@ -39,10 +39,10 @@ class Player
 	
 	public void MoveTo(int targetX, int targetY)
 	{
-		PreviousPosition.x = Position.x;
-		PreviousPosition.y = Position.y;
+		PreviousPosition.X = Position.X;
+		PreviousPosition.Y = Position.Y;
 
-		Position.x = targetX;
-		Position.y = targetY;
+		Position.X = targetX;
+		Position.Y = targetY;
 	}
 }

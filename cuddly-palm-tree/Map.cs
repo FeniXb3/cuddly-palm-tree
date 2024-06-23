@@ -16,10 +16,10 @@ class Map
     public void Display(Point mapOrigin)
     {
         origin = mapOrigin;
-        Console.CursorTop = mapOrigin.y;
+        Console.CursorTop = mapOrigin.Y;
         foreach (string row in mapData)
         {
-            Console.CursorLeft = mapOrigin.x;
+            Console.CursorLeft = mapOrigin.X;
             Console.WriteLine(row);
         }
     
@@ -33,16 +33,16 @@ class Map
 
     private void SetCursorPositionWithOrigin(Point position)
     {
-        int x = position.x + origin.x;
-        int y = position.y + origin.y;
+        int x = position.X + origin.X;
+        int y = position.Y + origin.Y;
 
         Console.SetCursorPosition(x, y);
     }
 
     public void RedrawCell(Point position)
     {
-        string row = mapData[position.y];
-        char cell = row[position.x];
+        string row = mapData[position.Y];
+        char cell = row[position.X];
 
         SetCursorPositionWithOrigin(position);
         Console.Write(cell);
@@ -50,8 +50,8 @@ class Map
 
     internal bool IsPositionCorrect(Point position)
     {
-        if (position.y >= 0 && position.y < mapData.Length
-            && position.x >= 0 && position.x < mapData[position.y].Length)
+        if (position.Y >= 0 && position.Y < mapData.Length
+            && position.X >= 0 && position.X < mapData[position.Y].Length)
         {
             return true;
         }
