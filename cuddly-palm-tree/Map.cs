@@ -5,11 +5,13 @@ class Map
 {
     string[] mapData = new string[]{
         "#########",
-        "#.......#",
-        "#.......#",
-        "#.......#",
-        "#.......#",
-        "#.......#",
+        "#.......######",
+        "#............#",
+        "#.......######",
+        "#........",
+        "#.......#####################",
+        "#...........................#",
+        "#.......#####################",
         "#########",
     };
     
@@ -19,6 +21,14 @@ class Map
     {
         int sizeY = mapData.Length;
         int sizeX = mapData[0].Length;
+
+        foreach (string row in mapData)
+        {
+            if (row.Length > sizeX)
+            {
+                sizeX = row.Length;
+            }
+        }
 
         int drawingWidth = sizeX + mapOrigin.X;
         int drawingHeight = sizeY + mapOrigin.Y;
