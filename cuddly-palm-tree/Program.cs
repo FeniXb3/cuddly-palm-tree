@@ -12,15 +12,15 @@ public class Program
 		mapOrigin.x = 5;
 		mapOrigin.y = 3;
 		map.Display(mapOrigin);
-        map.DrawSomethingAt(hero.visuals, hero.position);
+        map.DrawSomethingAt(hero.Visuals, hero.Position);
 		while (true)
 		{
 			Point nextPosition = hero.GetNextPosition();
 			if (map.IsPositionCorrect(nextPosition))
 			{
 				hero.MoveTo(nextPosition.x, nextPosition.y);
-				map.RedrawCell(hero.previousPosition);
-        		map.DrawSomethingAt(hero.visuals, hero.position);
+				map.RedrawCell(hero.PreviousPosition);
+        		map.DrawSomethingAt(hero.Visuals, hero.Position);
 			}
 		}
 	}
