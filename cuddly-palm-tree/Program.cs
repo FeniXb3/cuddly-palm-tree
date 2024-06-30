@@ -11,6 +11,8 @@ public class Program
 		Map map = new Map();
         Point mapOrigin = new Point(5, 3);
 
+		int round = 1;
+
 		try
 		{
 			map.Display(mapOrigin);
@@ -19,6 +21,11 @@ public class Program
 			while (true)
 			{
 				Point nextPosition = hero.GetNextPosition();
+				// if (round % 5 == 0)
+				// {
+				// 	nextPosition = hero.respawnPosition;
+				// }
+
 				if (map.IsPositionCorrect(nextPosition))
 				{
 					hero.MoveTo(nextPosition.X, nextPosition.Y);
@@ -26,6 +33,23 @@ public class Program
 					map.DrawSomethingAt(hero.Visuals, hero.Position);
 				}
 
+				int distanceX = Math.Abs(hero.Position.X - troll.Position.X);
+				int distanceY = Math.Abs(hero.Position.Y - troll.Position.Y);
+
+				if ((distanceX == 1 && distanceY == 0) || (distanceX == 0 && distanceY == 1))
+				{
+					Console.SetCursorPosition(2, 0);
+					Console.WriteLine("Troll!! Troll in the dungeon!!! Press any key to continue");
+					Console.ReadKey(true);
+					Console.SetCursorPosition(2, 0);
+					Console.WriteLine("Troll!! Troll in the dungeon!!!                           ");
+				}
+				else
+				{
+					Console.SetCursorPosition(2, 0);
+					Console.WriteLine("                                 ");
+				}
+				
 				nextPosition = troll.GetNextPosition();
 				if (map.IsPositionCorrect(nextPosition))
 				{
@@ -33,6 +57,22 @@ public class Program
 					map.RedrawCell(troll.PreviousPosition);
 					map.DrawSomethingAt(troll.Visuals, troll.Position);
 				}
+
+				distanceX = Math.Abs(hero.Position.X - troll.Position.X);
+				distanceY = Math.Abs(hero.Position.Y - troll.Position.Y);
+
+				if ((distanceX == 1 && distanceY == 0) || (distanceX == 0 && distanceY == 1))
+				{
+					Console.SetCursorPosition(2, 1);
+					Console.WriteLine("Spotted by troll!");
+				}
+				else
+				{
+					Console.SetCursorPosition(2, 1);
+					Console.WriteLine("                                 ");
+				}
+
+				round++;
 			}
 		}
 		catch (WindowToSmallToDrawException ex)
